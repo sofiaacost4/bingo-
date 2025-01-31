@@ -75,7 +75,7 @@ def exibir_cartela(cartela):
     print(f"Jogador {cartela['jogador']}:")
     for linha, marcado in zip(cartela['cartela'], cartela['escolhidos']):
         print(" ".join(f"[{num:2}]" if m else f"{num:2}" for num, m in zip(linha, marcado)))
-    print('❣ ',"- " * 20,'❣')
+    print('\033[35m❣\033[m ',"- " * 20,'\033[35m❣\033[m ')
 
 #Checa se algum jogador marcou todos os números da cartela e venceu
 def checar_se_venceu(cartela):
@@ -84,8 +84,8 @@ def checar_se_venceu(cartela):
 #Função do jogo principal
 def jogo():
     print("Escolha o modo de jogo:")
-    print("0 - MODO RÁPIDO (2 jogadores)")
-    print("1 - MODO DIFÍCIL (4 jogadores)")
+    print("0 - MODO RÁPIDO")
+    print("1 - MODO DEMORADO")
     
     while True:
             modo = int(input("Digite 0 ou 1: "))
@@ -108,7 +108,7 @@ def jogo():
             checar_cartela(cartela, num_sorteado)
             exibir_cartela(cartela)
             if checar_se_venceu(cartela):
-                print(f"Jogador {cartela['jogador']} é o vencedor!（っ＾▿＾）")
+                print(f"\033[35mJogador {cartela['jogador']} é o vencedor!\033[m（っ＾▿＾）")
                 return
 
 jogo()
