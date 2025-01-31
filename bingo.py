@@ -17,15 +17,12 @@ def checar_cartela(cartela, num_sorteado):
             if cartela["cartela"][i][j] == num_sorteado:
                 cartela["escolhidos"][i][j] = True
 
+    
 #Sorteia um número aleatório, sem repetição.
-def sortear_numero(modo, numeros_sorteados):
-    if modo == 0:
-        numeros = list(range(1, 31)) 
-    else:
-        numeros = list(range(1, 41)) 
-
+def sortear_numero(modo, numeros_sorteados, numeros):
     while True:
         d = random.choice(numeros)
+        numeros.remove(d)
         if d not in numeros_sorteados:
             numeros_sorteados.append(d)
         return d
@@ -97,10 +94,11 @@ def jogo():
     num_jogadores = 2 if modo == 0 else 4
     cartelas = [criar_cartela(modo, f + 1) for f in range(num_jogadores)]
     numeros_sorteados = []
+    numeros = list(range(1, 31)) if modo == 0 else list(range(1, 41))
 
     while True:
         input("Pressione ENTER para continuar o jogo")
-        num_sorteado = sortear_numero(modo, numeros_sorteados)
+        num_sorteado = sortear_numero(modo, numeros_sorteados, numeros)
         print(f"=> Último número sorteado: {num_sorteado}")
         print(f"Números sorteados até agora: {sorted(numeros_sorteados)}")
 
