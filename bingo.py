@@ -4,12 +4,6 @@ import random
 #Professor: Alexandre
 #Turma: Infoweb 1
 
-#Constantes
-num_linhasr = 2
-num_linhasd = 3
-num_colunasr = 3
-num_colunasd = 4
-
 #Checa se o número sorteado está em alguma cartela e, se estiver, o marca com [] na cartela
 def checar_cartela(cartela, num_sorteado):
     for i in range(len(cartela["cartela"])):
